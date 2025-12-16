@@ -1,23 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Typing</title>
-		<link rel="stylesheet" href="./index.css" />
-	</head>
+<head>
+<meta charset="UTF-8">
+<title>Typing Speed Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
 
-	<body>
-		<h1>Practice your typing</h1>
-		<div>Click start to have a quote displayed. Type the quote as fast as you can!</div>
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="screen">
+    <h2>Login</h2>
+    <input id="username" placeholder="Enter username">
+    <button onclick="login()">Login</button>
+</div>
 
-		<p id="quote"></p>
-		<p id="message"></p>
-		<div>
-			<input type="text" aria-label="current word" id="typed-value" />
-		</div>
-		<div>
-			<button id="start" type="button">Start</button>
-		</div>
-		<script src="./index.js"></script>
-	</body>
+<!-- MAIN GAME -->
+<div id="gameScreen" class="container hidden">
+    <h1>Typing Speed Game</h1>
+
+    <div class="controls">
+        Difficulty:
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+
+        Time:
+        <select id="timeMode">
+            <option value="15">15 sec</option>
+            <option value="30">30 sec</option>
+            <option value="60">60 sec</option>
+            <option value="custom">Custom</option>
+        </select>
+        <input id="customTime" type="number" placeholder="Sec" min="5">
+
+        <label>
+            <input type="checkbox" id="beginnerMode"> Beginner Mode
+        </label>
+
+        <button onclick="startGame()">Start</button>
+        <button onclick="endGame()">End</button>
+        <span id="capsIndicator">Caps Lock OFF</span>
+    </div>
+
+    <p id="fingerHint"></p>
+
+    <div id="textDisplay"></div>
+    <input id="typingInput" disabled placeholder="Start typing here">
+
+    <div class="stats">
+        ⏱ <span id="time">0</span>s |
+        🎯 <span id="accuracy">0</span>% |
+        ⚡ WPM: <span id="wpm">0</span> |
+        🔥 Streak: <span id="streak">0</span> |
+        🏆 Best: <span id="bestStreak">0</span>
+    </div>
+
+    <div class="keyboard" id="keyboard"></div>
+
+    <button onclick="showLeaderboard()">Leaderboard</button>
+
+    <h3>Progress History</h3>
+    <table>
+        <thead>
+            <tr><th>Date</th><th>WPM</th><th>Accuracy</th></tr>
+        </thead>
+        <tbody id="historyTable"></tbody>
+    </table>
+</div>
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="screen hidden">
+    <h2>Result</h2>
+    <p>Time: <span id="rTime"></span>s</p>
+    <p>Accuracy: <span id="rAccuracy"></span>%</p>
+    <p>WPM: <span id="rWpm"></span></p>
+    <button onclick="closeResult()">Close</button>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="leaderboardScreen" class="screen hidden">
+    <h2>Leaderboard (Top 10)</h2>
+    <ol id="leaderboardList"></ol>
+    <button onclick="closeLeaderboard()">Close</button>
+</div>
+
+<script src="index.js"></script>
+</body>
 </html>

@@ -1,8 +1,94 @@
-.highlight {
-	background-color: yellow;
+body {
+    font-family: Arial, sans-serif;
+    background: #eef1f4;
+    margin: 0;
 }
 
-.error {
-	background-color: lightcoral;
-	border-color: red;
+.container {
+    max-width: 950px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+}
+
+.screen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden { display: none; }
+
+.controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#capsIndicator {
+    font-weight: bold;
+    color: red;
+}
+
+#textDisplay {
+    border: 1px solid black;
+    padding: 15px;
+    min-height: 60px;
+    font-size: 18px;
+}
+
+.correct { color: green; }
+.wrong { color: red; background: #ffd6d6; }
+
+#typingInput {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+}
+
+.stats {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+#fingerHint {
+    color: blue;
+    font-weight: bold;
+}
+
+/* KEYBOARD */
+.keyboard { margin-top: 20px; }
+.kb-row { display: flex; justify-content: center; margin-bottom: 4px; }
+
+.kb-key {
+    border: 1px solid #333;
+    padding: 8px;
+    margin: 2px;
+    min-width: 38px;
+    text-align: center;
+    background: #f3f3f3;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.kb-wide { min-width: 70px; }
+.kb-extra-wide { min-width: 220px; }
+.kb-active { background: #9df59d; }
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 6px;
+    text-align: center;
 }
